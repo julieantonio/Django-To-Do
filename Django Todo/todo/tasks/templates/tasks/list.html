@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="container">
+<h1>Maceos Chonk Emporium</h1>
+
+<form method='POST' action='/'>
+  {% csrf_token %}
+  {{form.title}}
+  <input type='submit' name='Create Task'>
+</form>
+
+{% for task in tasks  %}
+  <div class='todo-item'>
+    {% if task.complete == True %}
+    <strike>
+    <h3>{{task.title}}</h3>
+    </strike>
+    {% else %}
+    <h3>
+    {{task.title}}
+    </h3>
+    {% endif %}
+    <span>{{task.created}}</span>
+    <a href="{% url 'update_task' task.id %}">Update</a> 
+    <a href="{% url 'delete_task' task.id %}">Delete</a>
+  <!-- <form method='DELETE' action='/'><input type='submit' name='Delete Task'>X</form> -->
+    <!-- <input type='checkbox'>
+    {{task.complete}}
+  </input> -->
+ 
+  </div>
+{% endfor %}
+
+</div>

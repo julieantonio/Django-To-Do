@@ -1,0 +1,13 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  text-align: center;
+}
+
+.todo-item{
+    border: 3px solid purple;
+    border-radius: 4px;
+    width: 300px;
+}
